@@ -14,12 +14,13 @@ public class Main
             try
             {
                 limit = Integer.parseInt(scan.nextLine());
+                break;
             }
             catch (Exception e)
             {
                 System.out.print("Only integers are accepted.\nTry again: ");
-                //limit = Integer.parseInt(scan.nextLine());
             }
         }
+
     }
 }
