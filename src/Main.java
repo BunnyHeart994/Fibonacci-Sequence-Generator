@@ -3,9 +3,9 @@ import java.util.Scanner;
 public class Main
 {
     public static final Scanner scan = new Scanner(System.in);
+    public static int prev = 1, next = 2, result, limit;
     public static void main(String[] args)
     {
-        int prev = 1, next = 2, result, limit;
         System.out.print("THIS PROGRAM WILL GENERATE THE FIBONACCI " +
                 "SEQUENCE THAT WILL GO UP TO THE NUMBER YOU CHOSE (\"limit\").\n\n" +
                 "Input the limit: ");
@@ -22,28 +22,52 @@ public class Main
             }
         }
         System.out.print("Sequence: 1, 2, ");
-        for (int i = 0; i <= limit; i++)
-        {
-            result = prev + next;
-            if (result <= limit)
-                System.out.print(String.join(", ", Integer.toString(result)));
-            prev = next;
-            next = result;
-        }
+
+        System.out.print(String.join(", ", chain()));
     }
-    private static String chain(String... str)
+    private static String[] chain()
     {
-        int prev, next, limit, result, i;
-        for (i = 0; i <= limit; i++)
+        int i;
+        String[] tempArr = new String[1];
+        for(i = 0; i <= limit; i++)
         {
             result = prev + next;
-            if (result <= limit)
-                System.out.print(String.join(", ", Integer.toString(result)));
+                if (result <= limit)
+                {
+                    tempArr = (String[]) manualAddArrSlot(tempArr);
+                    tempArr[i] = Integer.toString(result);
+                }
             prev = next;
             next = result;
         }
-        int[] resultArr = new int[i];
-        str =
+        return tempArr;
+    }/*
+    private static String makeResult(String... str)
+    {
         return str;
+    }*/
+
+    public static Object[] changeArrType(Object[] target, String type) //NEW IMPORTANT
+    {
+        return switch (type)
+        {
+            case "short": yield target = new Short[target.length];
+            case "int": yield target = new Integer[target.length];
+            case "long": yield target = new Long[target.length];
+            case "string": yield target = new String[target.length];
+            case "char": yield target = new Character[target.length];
+            case "bool": yield target = new Boolean[target.length];
+            default: System.out.println("\nARRAY TYPE CONVERSION ERROR\nRETURNING null"); yield null;
+        };
+    }
+    public static Object[] manualAddArrSlot(Object[] mainArr)
+    {
+        Object[] tempArr = new Object[mainArr.length + 1];
+        for (int i = 0; i < mainArr.length; i++)
+        {
+            tempArr[i] = mainArr[i];
+        }
+        mainArr = tempArr;
+        return mainArr;
     }
 }
