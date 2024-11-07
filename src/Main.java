@@ -37,7 +37,7 @@ public class Main
     }
     private static void makeResult()
     {
-        int[] str = new int[chain() + 1];
+        int[] str = new int[Integer.parseInt(scan.nextLine())];
         for(int i = 0; i <= str.length; i++)
         {
             result = prev + next;
