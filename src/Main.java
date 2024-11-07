@@ -21,11 +21,17 @@ public class Main
                 System.out.print("Only integers are accepted.\nTry again: ");
             }
         }
-        System.out.print("Sequence: 1, 2");
+        //System.out.print("Sequence: 1, 2");
         makeResult();
     }
-    /*private static int chain()
+    /*private static int checkAndSet(int limit)
     {
+        switch (limit)
+        {
+            case 1: System.out.print("Sequence: 1.\nEND"); break;
+            case 2: System.out.print("Sequence: 1, 2.\nEND"); break;
+            default: return limit;
+        }
         int i;
         for(i = 0; result <= limit; i++)
         {
@@ -37,43 +43,27 @@ public class Main
     }*/
     private static void makeResult()
     {
-        int[] str = new int[limit];
-        while (limit < 1)
+        while (limit <= 0)
         {
             limit = Integer.parseInt(scan.nextLine());
         }
-        if (limit == 1)
+        switch (limit)
         {
-            System.out.print("Sequence: 1.\nEND");
-            return;
+            case 1: System.out.print("Sequence: 1.\nEND"); return;
+            case 2: System.out.print("Sequence: 1, 2.\nEND"); return;
+            default: System.out.print("Sequence: 1, 2") ;break;
         }
-        if (limit == 2)
-        {
-            System.out.print("Sequence: 2.\nEND");
-            return;
-        }
+        int[] str = new int[limit - 2];
+
         for(int i = 0; i < str.length; i++)
         {
-            if (limit == 1)
-            {
-                System.out.print("Sequence: 1");
-            }
-            else if (limit == 2)
-            {
-                System.out.print("Sequence: 2.\nEND");
-                break;
-            }
-            else
-            {
-                //str = new int[limit - 2];
-                result = prev + next;
-                str[i] = result;
-                if (i <= (str.length - 2))
-                    System.out.print(", " + str[i]);
-                else System.out.print(str[i] + ".");
-                prev = next;
-                next = result;
-            }
+            result = prev + next;
+            str[i] = result;
+            if (i <= (str.length - 2))
+                System.out.print(", " + str[i]);
+            else System.out.print(str[i] + ".");
+            prev = next;
+            next = result;
         }
         /*for (int i = 0; i <= str.length; i++)
         {
