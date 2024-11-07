@@ -24,7 +24,7 @@ public class Main
         System.out.print("Sequence: 1, 2");
         makeResult();
     }
-    private static int chain()
+    /*private static int chain()
     {
         int i;
         for(i = 0; result <= limit; i++)
@@ -34,19 +34,46 @@ public class Main
             next = result;
         }
         return i;
-    }
+    }*/
     private static void makeResult()
     {
-        int[] str = new int[Integer.parseInt(scan.nextLine())];
-        for(int i = 0; i <= str.length; i++)
+        int[] str = new int[limit];
+        while (limit < 1)
         {
-            result = prev + next;
-            str[i] = result;
-            if (i <= (str.length - 1))
-                System.out.print(", " + str[i]);
-            else System.out.print(str[i] + ".");
-            prev = next;
-            next = result;
+            limit = Integer.parseInt(scan.nextLine());
+        }
+        if (limit == 1)
+        {
+            System.out.print("Sequence: 1.\nEND");
+            return;
+        }
+        if (limit == 2)
+        {
+            System.out.print("Sequence: 2.\nEND");
+            return;
+        }
+        for(int i = 0; i < str.length; i++)
+        {
+            if (limit == 1)
+            {
+                System.out.print("Sequence: 1");
+            }
+            else if (limit == 2)
+            {
+                System.out.print("Sequence: 2.\nEND");
+                break;
+            }
+            else
+            {
+                //str = new int[limit - 2];
+                result = prev + next;
+                str[i] = result;
+                if (i <= (str.length - 2))
+                    System.out.print(", " + str[i]);
+                else System.out.print(str[i] + ".");
+                prev = next;
+                next = result;
+            }
         }
         /*for (int i = 0; i <= str.length; i++)
         {
