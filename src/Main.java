@@ -22,52 +22,34 @@ public class Main
             }
         }
         System.out.print("Sequence: 1, 2, ");
-
-        System.out.print(String.join(", ", chain()));
+        makeResult();
     }
-    private static String[] chain()
+    private static int chain()
     {
         int i;
-        String[] tempArr = new String[1];
         for(i = 0; i <= limit; i++)
         {
             result = prev + next;
-                if (result <= limit)
-                {
-                    tempArr = (String[]) manualAddArrSlot(tempArr);
-                    tempArr[i] = Integer.toString(result);
-                }
             prev = next;
             next = result;
         }
-        return tempArr;
-    }/*
-    private static String makeResult(String... str)
-    {
-        return str;
-    }*/
-
-    public static Object[] changeArrType(Object[] target, String type) //NEW IMPORTANT
-    {
-        return switch (type)
-        {
-            case "short": yield target = new Short[target.length];
-            case "int": yield target = new Integer[target.length];
-            case "long": yield target = new Long[target.length];
-            case "string": yield target = new String[target.length];
-            case "char": yield target = new Character[target.length];
-            case "bool": yield target = new Boolean[target.length];
-            default: System.out.println("\nARRAY TYPE CONVERSION ERROR\nRETURNING null"); yield null;
-        };
+        return i;
     }
-    public static Object[] manualAddArrSlot(Object[] mainArr)
+    private static void makeResult()
     {
-        Object[] tempArr = new Object[mainArr.length + 1];
-        for (int i = 0; i < mainArr.length; i++)
+        int[] str = new int[chain()];
+        for(int i = 0; i <= limit; i++)
         {
-            tempArr[i] = mainArr[i];
+            result = prev + next;
+            str[i] = result;
+            prev = next;
+            next = result;
         }
-        mainArr = tempArr;
-        return mainArr;
+        for (int i = 0; i <= str.length; i++)
+        {
+            if (i <= (str.length - 2))
+                System.out.print(str[i] + ", ");
+            else System.out.print(str[i] + ".");
+        }
     }
 }
