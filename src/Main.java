@@ -21,13 +21,13 @@ public class Main
                 System.out.print("Only integers are accepted.\nTry again: ");
             }
         }
-        System.out.print("Sequence: 1, 2, ");
+        System.out.print("Sequence: 1, 2");
         makeResult();
     }
     private static int chain()
     {
         int i;
-        for(i = 0; i <= limit; i++)
+        for(i = 0; result <= limit; i++)
         {
             result = prev + next;
             prev = next;
@@ -37,19 +37,23 @@ public class Main
     }
     private static void makeResult()
     {
-        int[] str = new int[chain()];
-        for(int i = 0; i <= limit; i++)
+        int[] str = new int[chain() + 1];
+        for(int i = 0; i <= str.length; i++)
         {
             result = prev + next;
             str[i] = result;
+            if (i <= (str.length - 1))
+                System.out.print(", " + str[i]);
+            else System.out.print(str[i] + ".");
             prev = next;
             next = result;
         }
-        for (int i = 0; i <= str.length; i++)
+        /*for (int i = 0; i <= str.length; i++)
         {
-            if (i <= (str.length - 2))
-                System.out.print(str[i] + ", ");
+            //IMPORTANT
+            if (i <= (str.length - 1))
+                System.out.print(", " + str[i]);
             else System.out.print(str[i] + ".");
-        }
+        }*/
     }
 }
