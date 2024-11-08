@@ -3,7 +3,8 @@ import java.util.Scanner;
 public class Main
 {
     public static final Scanner scan = new Scanner(System.in);
-    public static int prev = 1, next = 2, result, limit;
+    public static int prev = 1, next = 2, limit;
+    public static long result;
     public static void main(String[] args)
     {
         System.out.print("THIS PROGRAM WILL GENERATE THE FIBONACCI " +
@@ -13,7 +14,10 @@ public class Main
         {
             try
             {
-                limit = scan.nextInt();
+                //while (true)
+                //{
+                    limit = scan.nextInt(); //NEEDS FIXING WORK
+                //}
                 break;
             }
             catch (Exception e)
