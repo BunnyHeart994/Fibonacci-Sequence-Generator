@@ -13,7 +13,7 @@ public class Main
         {
             try
             {
-                limit = Integer.parseInt(scan.nextLine());
+                limit = scan.nextInt();
                 break;
             }
             catch (Exception e)
@@ -21,31 +21,13 @@ public class Main
                 System.out.print("Only integers are accepted.\nTry again: ");
             }
         }
-        //System.out.print("Sequence: 1, 2");
-        makeResult();
+        simple();
     }
-    /*private static int checkAndSet(int limit)
-    {
-        switch (limit)
-        {
-            case 1: System.out.print("Sequence: 1.\nEND"); break;
-            case 2: System.out.print("Sequence: 1, 2.\nEND"); break;
-            default: return limit;
-        }
-        int i;
-        for(i = 0; result <= limit; i++)
-        {
-            result = prev + next;
-            prev = next;
-            next = result;
-        }
-        return i;
-    }*/
-    private static void makeResult()
+    private static void simple()
     {
         while (limit <= 0)
         {
-            limit = Integer.parseInt(scan.nextLine());
+            limit = scan.nextInt();
         }
         switch (limit)
         {
@@ -59,18 +41,11 @@ public class Main
         {
             result = prev + next;
             str[i] = result;
-            if (i <= (str.length - 2))
+            if (i <= str.length - 2)
                 System.out.print(", " + str[i]);
-            else System.out.print(str[i] + ".");
+            else System.out.print(", " + str[i] + ".");
             prev = next;
             next = result;
         }
-        /*for (int i = 0; i <= str.length; i++)
-        {
-            //IMPORTANT
-            if (i <= (str.length - 1))
-                System.out.print(", " + str[i]);
-            else System.out.print(str[i] + ".");
-        }*/
     }
 }
