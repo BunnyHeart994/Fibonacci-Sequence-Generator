@@ -10,7 +10,7 @@ public class Main
     {
         System.out.print("THIS PROGRAM WILL GENERATE THE FIBONACCI " +
                 "SEQUENCE THAT WILL GO UP TO THE NUMBER YOU CHOSE (\"limit\").\n\n" +
-                "Input the limit (up to ?): ");
+                "Input the limit: ");
         while(true)
         {
             try
