@@ -35,7 +35,7 @@ public class Main
         {
             case 1: System.out.print("Sequence: 1.\nEND"); return;
             case 2: System.out.print("Sequence: 1, 2.\nEND"); return;
-            default: System.out.print("Sequence: 1, 2") ;break;
+            default: System.out.print("Sequence: 1, 2, ") ; break;
         }
         long[] str = new long[limit - 2];
 
@@ -47,13 +47,20 @@ public class Main
                 break;
             }
             else
+            {
                 result = prev + next;
-            str[i] = result;
-            if (i <= str.length - 2)
-                System.out.print(", " + str[i]);
-            else System.out.print(", " + str[i] + ".\nEND");
-            prev = next;
-            next = result;
+                str[i] = result;
+                if (i <= str.length - 2)
+                {
+                    if (i % 5 == 0)/* && i != 0) || i == 2*/
+                        System.out.print(str[i] + ",\n");
+                    else
+                        System.out.print(str[i] + ", ");
+                }
+                else System.out.print(str[i] + ".\nEND");
+                prev = next;
+                next = result;
+            }
         }
     }
 }
