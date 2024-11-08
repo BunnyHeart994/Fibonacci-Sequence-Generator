@@ -1,2 +1,2 @@
 # Fibonacci Sequence Generator
-(work in progress)
+Version 1 is ready. More features are still work in progress.
